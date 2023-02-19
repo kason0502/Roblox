@@ -1,0 +1,60 @@
+x = 20
+
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("How Far Can You Throw? - Lemonade", "Ocean")
+--AutoFarm
+local Main = Window:NewTab("Main")
+local Farm = Main:NewSection("Auto Farm")
+--Throw
+Farm:NewToggle("Auto Throw", "Throws as soon as possible", function(state)
+    if state then
+        while x == 20 do
+            game:GetService("ReplicatedStorage").Remotes.AttemptThrow:InvokeServer()
+            wait(3)
+            if state == false then
+                x = x - 1
+            end
+        end
+        else 
+            x = 19
+            end
+end)
+--Rebirth
+Farm:NewToggle("Auto Rebirth", "Rebirths when possible", function(state)
+    if state then
+        while x == 20 do
+            game:GetService("ReplicatedStorage").Remotes.RebirthRequest:InvokeServer()
+            wait(3)
+            if state == false then
+                x = x - 1
+            end
+        end
+        else 
+            x = 19
+            end
+end)
+
+Farm:NewToggle("Auto Strength", "Upgrades Strength", function(state)
+    if state then
+        while x == 20 do
+            local args = {
+                [1] = 1
+            }
+            
+            game:GetService("ReplicatedStorage").Remotes.BuyStrength:FireServer(unpack(args))
+            wait()
+            if state == false then
+                x = x - 1
+            end
+        end
+        else 
+            x = 19
+            end
+end)
+--walkspeed
+local Walk = Window:NewTab("Walk")
+local Walkspeed = Walk:NewSection("walkspeed")
+
+Walkspeed:NewSlider("Walkspeed", "Changes walkspeed to whatever you want", 500, 0, function(s) -- 500 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
