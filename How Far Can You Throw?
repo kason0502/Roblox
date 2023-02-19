@@ -42,6 +42,17 @@ Farm:NewToggle("Auto Strength", "Upgrades Strength", function(state)
             }
             
             game:GetService("ReplicatedStorage").Remotes.BuyStrength:FireServer(unpack(args))
+            local args = {
+                [1] = 3
+            }
+            
+            game:GetService("ReplicatedStorage").Remotes.BuyStrength:FireServer(unpack(args))
+            local args = {
+                [1] = 2
+            }
+            
+            game:GetService("ReplicatedStorage").Remotes.BuyStrength:FireServer(unpack(args))
+            
             wait()
             if state == false then
                 x = x - 1
