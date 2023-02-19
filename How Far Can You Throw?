@@ -1,8 +1,7 @@
 --MADE BY ZENPP
 x = 20
-
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-local Window = Library.CreateLib("How Far Can You Throw? - ZENPP", "Ocean")
+local Window = Library.CreateLib("How Far Can You Throw? - Zenpp", "BloodTheme")
 --AutoFarm
 local Main = Window:NewTab("Main")
 local Farm = Main:NewSection("Auto Farm")
