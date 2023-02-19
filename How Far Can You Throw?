@@ -10,7 +10,7 @@ Farm:NewToggle("Auto Throw", "Throws as soon as possible", function(state)
     if state then
         while x == 20 do
             game:GetService("ReplicatedStorage").Remotes.AttemptThrow:InvokeServer()
-            wait(3)
+            wait(2)
             if state == false then
                 x = x - 1
             end
