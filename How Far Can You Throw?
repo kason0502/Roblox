@@ -1,42 +1,49 @@
---MADE BY ZENPP
-x = 20
+-- MADE BY ZENPP
+
+
+x = 1
+y = 1
+z = 1
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-local Window = Library.CreateLib("How Far Can You Throw? - Zenpp", "BloodTheme")
+local Window = Library.CreateLib("How Far Can You Throw? - Lemonade", "BloodTheme")
 --AutoFarm
 local Main = Window:NewTab("Main")
 local Farm = Main:NewSection("Auto Farm")
 --Throw
 Farm:NewToggle("Auto Throw", "Throws as soon as possible", function(state)
     if state then
-        while x == 20 do
+        x = x + 1
+        while x == 2 do
             game:GetService("ReplicatedStorage").Remotes.AttemptThrow:InvokeServer()
-            wait(2)
-            if state == false then
-                x = x - 1
-            end
-        end
-        else 
-            x = 19
-            end
-end)
---Rebirth
-Farm:NewToggle("Auto Rebirth", "Rebirths when possible", function(state)
-    if state then
-        while x == 20 do
-            game:GetService("ReplicatedStorage").Remotes.RebirthRequest:InvokeServer()
             wait(3)
             if state == false then
                 x = x - 1
             end
         end
         else 
-            x = 19
+            x = 1
+            end
+end)
+--Rebirth
+Farm:NewToggle("Auto Rebirth", "Rebirths when possible", function(state)
+    if state then
+        y = y + 1
+        while y == 2 do
+            game:GetService("ReplicatedStorage").Remotes.RebirthRequest:InvokeServer()
+            wait(3)
+            if state == false then
+                y = y - 1
+            end
+        end
+        else 
+            x = 1
             end
 end)
 
 Farm:NewToggle("Auto Strength", "Upgrades Strength", function(state)
     if state then
-        while x == 20 do
+        z = z + 1 
+        while z == 2 do
             local args = {
                 [1] = 1
             }
@@ -55,17 +62,21 @@ Farm:NewToggle("Auto Strength", "Upgrades Strength", function(state)
             
             wait()
             if state == false then
-                x = x - 1
+                z = z - 1
             end
         end
         else 
-            x = 19
+            z = 1
             end
 end)
 --walkspeed
 local Walk = Window:NewTab("Walk")
-local Walkspeed = Walk:NewSection("walkspeed")
+local Walkspeed = Walk:NewSection("Walkspeed")
 
 Walkspeed:NewSlider("Walkspeed", "Changes walkspeed to whatever you want", 500, 0, function(s) -- 500 (MaxValue) | 0 (MinValue)
     game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+
+Walkspeed:NewButton("InfYield", "Runs Inf Yeild", function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
 end)
